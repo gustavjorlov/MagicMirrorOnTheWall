@@ -1,8 +1,8 @@
 var myApp = angular.module('app', []);
 
-myApp.controller("MainCtrl", ['$scope', '$http', MainCtrl]);
+myApp.controller("MainCtrl", ['$http', MainCtrl]);
 
-function MainCtrl($scope, $http){
+function MainCtrl($http){
 	var self = this;
 	self.news = [];
 	self.weather = [];
