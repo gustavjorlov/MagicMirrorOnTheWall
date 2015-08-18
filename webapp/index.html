@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Magic Mirror On The Wall</title>
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script src="i18n/angular-locale_sv-se.js"></script>
+	<script type="text/javascript" src="appControl.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="reset.css">
+
+	<style type="text/css">
+	@import url(http://fonts.googleapis.com/css?family=Lobster);
+	@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+	@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+	@import url(http://fonts.googleapis.com/css?family=Amatic+SC:400,700);
+	body{
+		background: black;
+		color: #999;
+		padding-top: 20px;
+	}
+	.maintitle{
+		font-family: 'Amatic SC';
+		font-size: 100px;
+		margin-bottom: 25px;
+	}
+	.card{
+		font-size: 30px;
+		width: 500px;
+		margin-bottom: 25px;
+	}
+	.card h3{
+		font-size: 36px;
+	}
+	.card p{
+		font-size: 24px;
+		margin-top: 0px;
+	}
+	.left, .right{
+		padding: 10px;
+	}
+	.right {
+		font-family: 'Amatic SC';
+		font-weight: 700;
+	    /*width: 410px;*/
+	    float: right;
+	    display: inline;
+	    text-align: right
+	}
+	.left {
+		font-family: 'Amatic SC';
+		font-weight: 700;
+	    /*width: 410px;*/
+	    float: left;
+	    display: inline;
+	    text-align: left;
+	}
+	.content{
+		width: 100%;
+		text-align: center;
+	}
+	</style>
+</head>
+<body ng-app="app">
+<div class="content" ng-controller="MainCtrl as main">
+	<h1 class="maintitle">{{main.title}}</h1>
+
+	<div class="left">
+		<div class="news card" ng-repeat="value in main.news">
+			<h3>{{value.title}}</h3>
+			<!-- <p>{{value.description}}</p> -->
+			<p>{{value.date | date : 'EEE, H:mm'}}</p>
+		</div>
+	</div>
+
+	<div class="right">
+		<div class="weather card" ng-repeat="(key, value) in main.weather">
+			<h3>{{value.time | date : 'EEE, H:mm'}}</h3>
+			<p>{{value.temperature}} C - {{value.precipitation}} mm - {{value.windspeed}} m/s</p>
+			<!--"temperature": parsedBody.timeseries[i].t,
+				"time": +new Date(parsedBody.timeseries[i].validTime),
+				"windspeed": parsedBody.timeseries[i].ws,
+				"winddirection": parsedBody.timeseries[i].wd,
+				"totalcloudamount": parsedBody.timeseries[i].tcc,
+				"precipitation": parsedBody.timeseries[i].pit,
+				"precipitationtype": parsedBody.timeseries[i].pcat-->
+		</div>
+	</div>
+
+</div>
+</body>
+</html>
