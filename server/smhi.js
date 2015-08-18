@@ -5,9 +5,7 @@ function getWeather(cb){
 	request.get(url, function(err, response, body){
 		var weatherTemp = [];
 		var parsedBody = JSON.parse(body);
-		console.log(parsedBody.timeseries);
 		for(var i in parsedBody.timeseries){
-			console.log(parsedBody.timeseries[i])
 			weatherTemp.push({
 				"temperature": parsedBody.timeseries[i].t,
 				"time": +new Date(parsedBody.timeseries[i].validTime),
@@ -18,9 +16,6 @@ function getWeather(cb){
 				"precipitationtype": parsedBody.timeseries[i].pcat
 			});
 		}
-
-
-
 		cb(null, weatherTemp.slice(0, 5));
 	});
 }
