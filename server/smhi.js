@@ -5,19 +5,38 @@ function getWeather(cb){
 	request.get(url, function(err, response, body){
 		var weatherTemp = [];
 		var parsedBody = JSON.parse(body);
-		for(var i in parsedBody.timeseries){
-			weatherTemp.push({
-				"temperature": parsedBody.timeseries[i].t,
-				"time": +new Date(parsedBody.timeseries[i].validTime),
-				"windspeed": parsedBody.timeseries[i].ws,
-				"winddirection": parsedBody.timeseries[i].wd,
-				"totalcloudamount": parsedBody.timeseries[i].tcc,
-				"precipitation": parsedBody.timeseries[i].pit,
-				"precipitationtype": parsedBody.timeseries[i].pcat
-			});
+
+		var futureData = getFutureData(parsedBody.timeseries);
+
+		aggregateIntervals(futureData);
+
+		for(var i in futureData){
+			if(i % 4 === 0){
+				var dataPoint = futureData[i];
+				weatherTemp.push({
+					"temperature": dataPoint.t,
+					"time": +new Date(dataPoint.validTime),
+					"windspeed": dataPoint.ws,
+					"winddirection": dataPoint.wd,
+					"totalcloudamount": dataPoint.tcc,
+					"precipitation": dataPoint.pit,
+					"precipitationtype": dataPoint.pcat
+				});
+			}
+			
 		}
-		cb(null, weatherTemp.slice(0, 5));
+		cb(null, weatherTemp.slice(0, 6));
 	});
+}
+
+function getFutureData(data){
+	return data.filter(function(item){
+		return +new Date(item.validTime) > +new Date();
+	});
+}
+
+function aggregateIntervals(data){
+	// console.log(data);
 }
 
 module.exports = {

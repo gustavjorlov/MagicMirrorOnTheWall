@@ -1,10 +1,7 @@
 var request = require('request');
 var xml2js = require('xml2js').parseString;
 var fs = require('fs');
-var url = "http://www.alingsastidning.se/kategori/nyheter/alingsas/feed/";
-
-var response = '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/"><channel><title>Alingsås Tidning Alingsås</title></channel></rss>';
-
+var urls = ["http://www.alingsastidning.se/kategori/nyheter/alingsas/feed/", "http://www.gp.se/1.16943", "http://www.gp.se/1.16942"];
 
 function getNews(number, cb){
 	makeAPIRequest(function(err, data){
@@ -20,6 +17,13 @@ function getInterestingData(newsResponse, number){
 	for(var i in newsList){
 		if(number <= i){ break; }
 
+		// tempNewsList.push({
+		// 	title: newsList[i].title,
+		// 	description: newsList[i].description,
+		// 	date: +new Date(newsList[i].pubDate),
+		// 	author: newsList[i]['dc:creator']
+		// });
+
 		tempNewsList.push({
 			title: newsList[i].title[0],
 			description: newsList[i].description[0],
@@ -31,7 +35,7 @@ function getInterestingData(newsResponse, number){
 }
 
 function makeAPIRequest(cb){
-	request.get(url, function(err, xmlData, body){
+	request.get(urls[0], function(err, xmlData, body){
 		xml2js(body, cb);
 	});
 }
