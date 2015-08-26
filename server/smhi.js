@@ -25,7 +25,7 @@ function getWeather(cb){
 			}
 			
 		}
-		cb(null, weatherTemp.slice(0, 6));
+		cb(null, weatherTemp.slice(0, 5));
 	});
 }
 
