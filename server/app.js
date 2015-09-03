@@ -6,6 +6,7 @@ var morgan = require('morgan');
 
 var app = express();
 
+app.set('port', (process.env.PORT || 3000));
 app.use(morgan('dev'));
 app.use(express.static(__dirname + "/../webapp"));
 
@@ -35,4 +36,4 @@ function returnWithoutError(res, err, data){
 	}
 }
 
-app.listen(3000);
+app.listen(app.get('port'));
