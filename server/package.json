@@ -4,6 +4,7 @@
 	"dependencies": {
 		"request": "*",
 		"express": "*",
-		"xml2js": "*"
+		"xml2js": "*",
+		"morgan": "1.6.1"
 	}
 }

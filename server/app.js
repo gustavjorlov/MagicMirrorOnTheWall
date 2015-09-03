@@ -2,9 +2,11 @@ var smhi = require('./smhi');
 var news = require('./news');
 var days = require('./days');
 var express = require('express');
+var morgan = require('morgan');
 
 var app = express();
 
+app.use(morgan('dev'));
 app.use(express.static(__dirname + "/../webapp"));
 
 app.get('/weather', function(req, res){
