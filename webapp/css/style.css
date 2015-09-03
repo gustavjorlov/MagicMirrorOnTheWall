@@ -8,8 +8,8 @@ body{
 	padding-top: 20px;
 }
 .maintitle{
-	font-family: 'Amatic SC';
-	font-size: 100px;
+	font-family: consolas; /*'Amatic SC'*/
+	font-size: 50px;
 	margin-bottom: 25px;
 }
 .card{
@@ -17,17 +17,17 @@ body{
 	margin-bottom: 25px;
 }
 .card h3{
-	font-size: 30px;
+	font-size: 20px;
 }
 .card p{
-	font-size: 24px;
+	font-size: 14px;
 	margin-top: 0px;
 }
 .left, .right{
 	padding: 10px;
 }
 .right {
-	font-family: 'Amatic SC';
+	font-family: consolas;
 	font-weight: 700;
     /*width: 410px;*/
     float: right;
@@ -35,7 +35,7 @@ body{
     text-align: right
 }
 .left {
-	font-family: 'Amatic SC';
+	font-family: consolas;
 	font-weight: 700;
     /*width: 410px;*/
     float: left;
