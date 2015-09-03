@@ -12,6 +12,7 @@
 		"npm": "2.7.4"
 	},
 	"scripts": {
-		"start": "node server/app.js"
+		"start": "node server/app.js",
+		"postinstall": "bower install"
 	}
 }
