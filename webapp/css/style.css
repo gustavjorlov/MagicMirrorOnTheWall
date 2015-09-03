@@ -1,0 +1,48 @@
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC:400,700);
+body{
+	background: black;
+	color: #999;
+	padding-top: 20px;
+}
+.maintitle{
+	font-family: 'Amatic SC';
+	font-size: 100px;
+	margin-bottom: 25px;
+}
+.card{
+	/*width: 400px;*/
+	margin-bottom: 25px;
+}
+.card h3{
+	font-size: 30px;
+}
+.card p{
+	font-size: 24px;
+	margin-top: 0px;
+}
+.left, .right{
+	padding: 10px;
+}
+.right {
+	font-family: 'Amatic SC';
+	font-weight: 700;
+    /*width: 410px;*/
+    float: right;
+    display: inline;
+    text-align: right
+}
+.left {
+	font-family: 'Amatic SC';
+	font-weight: 700;
+    /*width: 410px;*/
+    float: left;
+    display: inline;
+    text-align: left;
+}
+.content{
+	width: 100%;
+	text-align: center;
+}
